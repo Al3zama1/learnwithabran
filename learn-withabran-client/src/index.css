@@ -1,68 +1,175 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    --dark-background: #1a1a22;
+    --dark-foreground: #e7e7ff;
+    --dark-accent: #7979fe;
+    --dark-border: color-mix(in srgb,var(--dark-foreground) 10%,transparent);
+    --dark-home-page-background: color-mix(in srgb, var(--dark-background) 100%, var(--dark-foreground) 7%);
+    --dark-section-background: color-mix(in srgb,var(--dark-foreground)4%,transparent);
+    --dark-section-hover-background: color-mix(in srgb,var(--dark-foreground)7%,transparent);
+    --dark-link-hover-background: color-mix(in srgb,var(--dark-foreground)3%,transparent);
+    --dark-active-link-background: color-mix(in srgb,var(--dark-accent)12%,transparent);
+    --dark-active-link-hover-background: color-mix(in srgb,var(--dark-accent)20%,transparent);
+    --dark-link-foreground: color-mix(in srgb,var(--dark-foreground)70%,transparent);
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    
+    --light-background: white;
+    --light-foreground: #33335e;
+    --light-accent: #3030b6;
+    --light-border: color-mix(in srgb,var(--light-foreground)10%,transparent);
+    --light-home-page-background: color-mix(in srgb,var(--light-background),var(--light-foreground)7%);
+    --light-section-background: color-mix(in srgb,var(--light-foreground)4%,transparent);
+    --light-section-hover-background: color-mix(in srgb,var(--light-foreground)7%,transparent);
+    --light-link-hover-background: color-mix(in srgb,var(--light-foreground)3%,transparent);
+    --light-active-link-background: color-mix(in srgb,var(--light-accent)12%,transparent);
+    --light-active-link-hover-background: color-mix(in srgb,var(--light-accent)20%,transparent);
+    --light-link-foreground: color-mix(in srgb,var(--light-foreground)70%,transparent);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+    --callout-radius: .75rem;
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+    
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@theme {
+    --color-dark-background: var(--dark-background);
+    --color-dark-foreground: var(--dark-foreground);
+    --color-dark-accent: var(--dark-accent);
+    --color-dark-border: var(--dark-border);
+    --color-dark-home-page-background: var(--dark-home-page-background);
+    --color-dark-section-background: var(--dark-section-background);
+    --color-dark-section-hover-background: var(--dark-section-hover-background);
+    --color-dark-link-hover-background: var(--dark-link-hover-background);
+    --color-dark-active-link-background: var(--dark-active-link-background);
+    --color-dark-active-link-hover-background: var(--dark-active-link-hover-background);
+    --color-dark-link-foreground: var(--dark-link-foreground);
+    
+
+    --color-light-background: var(--light-background);
+    --color-light-foreground: var(--light-foreground);
+    --color-light-accent: var(--light-accent);
+    --color-light-border: var(--light-border);
+    --color-light-home-page-background: var(--light-home-page-background);
+    --color-light-section-background: var(--light-section-background);
+    --color-light-section-hover-background: var(--light-section-hover-background);
+    --color-light-link-hover-background: var(--light-link-hover-background);
+    --color-light-active-link-background: var(--light-active-link-background);
+    --color-light-active-link-hover-background: var(--light-active-link-hover-background);
+    --color-light-link-foreground: var(--light-link-foreground);
+
+    
+
+    --font-sans: sans-serif;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+@layer utilities {
+
+    /* ARTICLE STYLES */
+
+    .dark .article .ql-code-block-container {
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem 0 !important;
+        color: var(--dark-foreground) !important;
+        background-color: color-mix(in srgb,var(--dark-foreground)2%,transparent) !important;
+        border: 2px solid var(--dark-border) !important;
+        font-size: 13px;
+    }
+
+    
+    .article .ql-code-block-container {
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem 0 !important;
+        color: var(--light-foreground) !important;
+        background-color: color-mix(in srgb,var(--light-foreground)2%,transparent) !important;
+        border: 2px solid var(--light-border) !important;
+        font-size: 13px;
+    }
+
+
+    .read.article .ql-ui {
+        @apply pointer-events-none
+    }
+
+    .article h1,h2,h3,p,li,a {
+        @apply font-sans
+    }
+
+    .article p {
+        @apply !my-4 text-base
+    }
+
+    .dark .article strong {
+        @apply text-dark-accent
+    }
+
+    .article strong {
+        @apply text-light-accent
+    }
+
+    .article h1 {
+        @apply text-5xl font-bold !my-10
+    }
+
+    .article h2 {
+        @apply text-3xl !mt-10 !mb-6
+    }
+
+    .article ol {
+        @apply !pl-12
+    }
+
+    .article li {
+        @apply !my-1 !pl-0 text-base
+    }
+
+    .article li[data-list="bullet"] {
+        @apply !list-disc 
+    }
+
+    .article li[data-list="bullet"]::marker {
+        @apply text-black
+    }
+
+    .dark .article li[data-list="bullet"]::marker {
+        @apply text-white
+    }
+
+    .article code {
+        @apply text-light-accent !bg-transparent !text-base
+    }
+
+    .dark .article code {
+        @apply text-dark-accent !bg-transparent !text-base
+    }
+
+    .article li[data-list="bullet"] .ql-ui {
+        @apply hidden
+    }
+
+    .article a {
+        @apply italic underline text-base !text-light-accent
+    }
+    
+    
+    .dark .article a {
+        @apply !text-dark-accent
+    }
+
+    .article .callout-true {
+        border: 2px solid var(--dark-accent);
+        border-radius: var(--callout-radius);
+        padding: 1.5rem !important;
+        background: linear-gradient(to bottom,transparent,color-mix(in srgb,var(--dark-accent)10%,transparent));
+    }
+
+    .article .callout-true::before {
+        content: "💡";
+        margin-right: .3rem;
+    }
+
 }
+
