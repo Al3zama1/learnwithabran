@@ -9,7 +9,8 @@ import hljs from 'highlight.js';
 // import 'highlight.js/styles/base16/sandcastle.css'
 import 'highlight.js/styles/atom-one-dark-reasonable.css'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { Highlighter } from 'lucide-react';
+import { Highlighter, Image } from 'lucide-react';
+import Upload from '../components/Upload';
 
 const toolbarOptions = [
     [{'header': [2, 3, false]}],
@@ -43,7 +44,7 @@ const WritePage = () => {
                     toolbar: {
                         container: '#toolbar',
                         handlers: {
-                            image: selectLocalImage
+                            // image: selectLocalImage
                         }
                     }
                 },
@@ -64,8 +65,8 @@ const WritePage = () => {
     useEffect(() => {
         if (quill) {
             quill.on('text-change', () => { 
-                console.log(JSON.stringify(quill.getContents()));
-                console.log(quill.getSemanticHTML());
+                // console.log(JSON.stringify(quill.getContents()));
+                // console.log(quill.getSemanticHTML());
                 
                 
             })
@@ -74,16 +75,18 @@ const WritePage = () => {
     }, [quill])
 
     function selectLocalImage() {
-        const input = document.createElement('input');
-        input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/*');
-        input.click();
+        // const input = document.createElement('input');
+        // input.setAttribute('type', 'file');
+        // input.setAttribute('accept', 'image/*');
+        // input.click();
         
-        input.onchange = () => {
-            if (!input || !input.files) return;
-            const file = input.files[0];
-            saveToServer(file);
-        }
+        // input.onchange = () => {
+        //     if (!input || !input.files) return;
+        //     const file = input.files[0];
+        //     saveToServer(file);
+        // }
+        console.log('image being placed');
+        
     }
 
     function saveToServer(file) {
@@ -222,7 +225,12 @@ const WritePage = () => {
                     <button className="ql-code-block"></button>
                 </span>
                 <span className="ql-formats">
-                    <button className="ql-image"></button>
+                    {/* <button className="ql-image"></button> */}
+                    <Upload type='image' insertIntoEditor={insertToEditor}>
+                        <button type='button' className=''>
+                            <Image className='ql-stroke' />
+                        </button>
+                    </Upload>
                 </span>
                 <span className='ql-formats'>
                     <button className='ql-important'>

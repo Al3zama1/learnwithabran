@@ -1,13 +1,13 @@
-package com.withabran.learn.learn_withabran_backend;
+package com.learnwithabran.learn_with_abran_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LearnWithabranBackendApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LearnWithabranBackendApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
