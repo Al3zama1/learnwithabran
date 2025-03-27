@@ -1,13 +1,8 @@
-import { ChevronDown, Menu } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import { ChevronDown } from 'lucide-react'
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import useAppContext from '../hooks/UseAppContext'
 
-
-type Props = {
-    sidebarOpen: boolean
-    setSidebarOpen: (value: boolean) => void
-}
 
 type Page = {
     pageTitle: string,

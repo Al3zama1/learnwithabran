@@ -1,7 +1,6 @@
 import Header from '../components/Header'
 import SideBar from '../components/SideBar'
 import { Outlet } from 'react-router-dom'
-import HomePage from '../routes/HomePage'
 import useAppContext from '../hooks/UseAppContext'
 
 const MainLayout = () => {

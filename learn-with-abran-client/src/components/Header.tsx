@@ -1,11 +1,6 @@
 import { Menu, Moon, Search, User } from 'lucide-react'
 import useAppContext from '../hooks/UseAppContext'
 
-type Props = {
-    open: boolean,
-    setOpen: (value: boolean) => void
-}
-
 const Header = () => {
 
     const { sidebarOpen, setSidebarOpen } = useAppContext();
