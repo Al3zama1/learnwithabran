@@ -3,13 +3,17 @@ const NetworkDevices = () => {
     <article className="article">
         <h1>Networking Basics</h1>
         <p>
-          A network is a web of interconnected network-specific devices that provide the infrastructure needed to move data from one device to another.
+          A computer network is a digital telecommunications network, which consists of two or more devices that are linked in order to share resources.
+          Devices on a network may be linked through cables, telephone lines, radio waves, or other methods.
         </p>
-        <h2>
-          Client/Server
-        </h2>
+        <h2>Local Area Network (LAN)</h2>
         <p>
-          Devices communicating over a network are usually referred to as clients and servers. For example, your browser is acting as a client and my website is behaving as a server - your browser sends requests and my website responds to those requests.
+          A Local Area Network (LAN) is a network that is geographically limited to a small area, such as a school or building. Devices in the same LAN can 
+          communicate directly with each other without leaving the network.
+        </p>
+        <h2>Client/Server</h2>
+        <p>
+          End devices communicating over a network are usually referred to as clients and servers. For example, your browser is acting as a client and my website is behaving as a server - your browser sends requests and my website responds to those requests.
         </p>
         <ul>
           <li>
@@ -58,7 +62,7 @@ const NetworkDevices = () => {
 
         <h3>Firewalls</h3>
         <p>
-          Firewalls are special network security devices that control network traffic entering and exiting the network.
+          Firewalls are special network security devices that control network traffic entering and exiting networks.
         </p>
         <ul>
           <li>
@@ -71,11 +75,11 @@ const NetworkDevices = () => {
             Monitor and control network traffic based on configuration rules.
           </li>
           <li>
-            Firewalls are knows as <strong>Next-Generation Firewalls</strong> when they include more modern and advanced filtering capabilities.
+            Firewalls are knows as <strong>next-generation firewalls</strong> when they include more modern and advanced filtering capabilities.
           </li>
         </ul>
         <p className="important">
-          There is another type of firewall called <strong>Host-based firewall</strong>, which is a software based firewall that filters traffic entering and exiting 
+          There is another type of firewall called <strong>host-based firewall</strong>, which is a software based firewall that filters traffic entering and exiting 
           a host machine, like a computer. Even in a network with a hardware firewall, each host should include a host-based firewall as an extra line of defense.
         </p>
 
