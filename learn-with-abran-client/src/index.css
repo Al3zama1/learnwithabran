@@ -70,15 +70,15 @@
     }
 
     .article h1 {
-        @apply text-5xl font-bold my-10 capitalize
+        @apply text-5xl font-bold my-10
     }
 
     .article h2 {
-        @apply mt-10 mb-6 text-3xl font-[100] capitalize
+        @apply mt-10 mb-6 text-3xl font-[100]
     }
 
     .article h3 {
-        @apply mt-10 mb-6 text-xl font-[100] capitalize
+        @apply mt-10 mb-6 text-xl font-[100]
     }
 
     .article p {
@@ -93,9 +93,26 @@
         @apply text-dark-accent
     }
 
+    .article ul {
+        @apply ml-3.5
+    }
+
     .article li {
         @apply list-disc my-1
     }
+
+    .article .important {
+        border: 2px solid var(--dark-accent);
+        border-radius: var(--callout-radius);
+        padding: 1.5rem !important;
+        background: linear-gradient(to bottom,transparent,color-mix(in srgb,var(--dark-accent)10%,transparent));
+    }
+
+    .article .important::before {
+        content: '💡';
+        margin-right: 3px;
+        
+    } 
 }
 
 /* @layer utilities {

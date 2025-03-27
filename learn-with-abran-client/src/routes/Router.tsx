@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import WelcomePage from "../book/introduction/WelcomePage";
 import MainLayout from "../layouts/MainLayout";
-import NetworkDevices from "../book/network-engineering/NetworkDevices";
+import NetworkingBasics from "../book/network-engineering/NetworkingBasics";
 
 const router = createBrowserRouter([
     {
@@ -12,8 +12,8 @@ const router = createBrowserRouter([
                 element: <WelcomePage />,
             },
             {
-                path: 'network-devices',
-                element: <NetworkDevices />
+                path: 'networking-basics',
+                element: <NetworkingBasics />
             }
         ]
     }

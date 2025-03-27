@@ -30,8 +30,8 @@ const tableOfContents : TableOfContents = [
         sectionTitle: 'Network Engineering',
         pages: [
             {
-                pageTitle: 'Network Devices',
-                link: '/network-devices'
+                pageTitle: 'Networking Basics',
+                link: '/networking-basics'
             },
             // {
             //     pageTitle: 'Iterator',
