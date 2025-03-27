@@ -11,6 +11,7 @@ import 'highlight.js/styles/atom-one-dark-reasonable.css'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { Highlighter, Image } from 'lucide-react';
 import Upload from '../components/Upload';
+import { ImageUploadReponseType } from '../types/api';
 
 const toolbarOptions = [
     [{'header': [2, 3, false]}],
@@ -94,10 +95,13 @@ const WritePage = () => {
         
     }
 
-    function insertToEditor(url : string) {
+    function insertToEditor(uploadResponse : ImageUploadReponseType) {
         const range = quill?.getSelection();
         if (!range) return
-        quill?.insertEmbed(range.index, 'image', url);
+        quill?.insertEmbed(range.index, 'image', uploadResponse.url);
+
+        console.log(uploadResponse);
+        
     }
 
     const handleTitleChange = (e) => {
@@ -223,6 +227,7 @@ const WritePage = () => {
                 <span className="ql-formats">
                     <button className="ql-code"></button>
                     <button className="ql-code-block"></button>
+                    <button className='ql-formula'></button>
                 </span>
                 <span className="ql-formats">
                     {/* <button className="ql-image"></button> */}

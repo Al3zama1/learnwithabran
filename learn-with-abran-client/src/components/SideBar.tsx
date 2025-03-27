@@ -23,92 +23,101 @@ type TableOfContents = Section[]
 
 const tableOfContents : TableOfContents = [
     {
-        sectionTitle: 'Fundamentals',
+        sectionTitle: "Introduction",
         pages: [
             {
-                pageTitle: 'Strategy',
-                link: '/strategy'
-            },
-            {
-                pageTitle: 'Iterator',
-                link: '/iterator'
-            },
-            {
-                pageTitle: 'Builder',
-                 link: '/builder'
-            },
-            {
-                pageTitle: 'Adapter',
-                link: '/adapter'
-            },
-            {
-                pageTitle: 'Facade',
-                link: '/facade'
-            },
-            {
-                pageTitle: 'Proxy',
-                link: '/proxy'
-            },
-            {
-                pageTitle: 'Dependency Injection',
-                link: '/dependency-injection'
+                pageTitle: 'Welcome',
+                link: '/'
             }
         ]
     },
     {
-        sectionTitle: 'Performance',
+        sectionTitle: 'Network Engineering',
         pages: [
             {
-                pageTitle: 'Laziness',
-                link: '/laziness'
+                pageTitle: 'Network Devices',
+                link: '/network-devices'
             },
-            {
-                pageTitle: 'Stream',
-                link: '/stream'
-            },
-            {
-                pageTitle: 'Pool',
-                link: '/pool'
-            },
-            {
-                pageTitle: 'Cache',
-                link: '/cache'
-            },
-            {
-                pageTitle: 'Look Up Table',
-                link: '/look-up-table'
-            }
+            // {
+            //     pageTitle: 'Iterator',
+            //     link: '/iterator'
+            // },
+            // {
+            //     pageTitle: 'Builder',
+            //      link: '/builder'
+            // },
+            // {
+            //     pageTitle: 'Adapter',
+            //     link: '/adapter'
+            // },
+            // {
+            //     pageTitle: 'Facade',
+            //     link: '/facade'
+            // },
+            // {
+            //     pageTitle: 'Proxy',
+            //     link: '/proxy'
+            // },
+            // {
+            //     pageTitle: 'Dependency Injection',
+            //     link: '/dependency-injection'
+            // }
         ]
     },
-    {
-        sectionTitle: 'Programming Languages',
-        pages: [
-            {
-                pageTitle: 'Interpretation',
-                link: '/interpretation'
-            },
-            {
-                pageTitle: 'Compilation',
-                link: '/compilation'
-            },
-            {
-                pageTitle: 'JIT',
-                link: 'jwt'
-            },
-            {
-                pageTitle: 'Reference Type',
-                link: '/reference-type'
-            }, 
-            {
-                pageTitle: 'Value Types',
-                link: '/value-types'
-            },
-            {
-                pageTitle: 'Static Types',
-                link: '/static-types'
-            }
-        ]
-    }
+    // {
+    //     sectionTitle: 'Performance',
+    //     pages: [
+    //         {
+    //             pageTitle: 'Laziness',
+    //             link: '/laziness'
+    //         },
+    //         {
+    //             pageTitle: 'Stream',
+    //             link: '/stream'
+    //         },
+    //         {
+    //             pageTitle: 'Pool',
+    //             link: '/pool'
+    //         },
+    //         {
+    //             pageTitle: 'Cache',
+    //             link: '/cache'
+    //         },
+    //         {
+    //             pageTitle: 'Look Up Table',
+    //             link: '/look-up-table'
+    //         }
+    //     ]
+    // },
+    // {
+    //     sectionTitle: 'Programming Languages',
+    //     pages: [
+    //         {
+    //             pageTitle: 'Interpretation',
+    //             link: '/interpretation'
+    //         },
+    //         {
+    //             pageTitle: 'Compilation',
+    //             link: '/compilation'
+    //         },
+    //         {
+    //             pageTitle: 'JIT',
+    //             link: 'jwt'
+    //         },
+    //         {
+    //             pageTitle: 'Reference Type',
+    //             link: '/reference-type'
+    //         }, 
+    //         {
+    //             pageTitle: 'Value Types',
+    //             link: '/value-types'
+    //         },
+    //         {
+    //             pageTitle: 'Static Types',
+    //             link: '/static-types'
+    //         }
+    //     ]
+    // }
 ]
 
 const SideBar = () => {
