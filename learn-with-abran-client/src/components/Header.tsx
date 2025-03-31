@@ -1,4 +1,4 @@
-import { Menu, Moon, Search, User } from 'lucide-react'
+import { Menu, Moon } from 'lucide-react'
 import useAppContext from '../hooks/UseAppContext'
 
 const Header = () => {
@@ -30,12 +30,6 @@ const Header = () => {
         <button className='hover:cursor-pointer' onClick={handleTheme}>
             <Moon />
         </button>
-        {/* <button className='hover:cursor-pointer'>
-            <Search />
-        </button> */}
-        {/* <button className='hover:cursor-pointer'>
-            <User />
-        </button> */}
     </header>
   )
 }
