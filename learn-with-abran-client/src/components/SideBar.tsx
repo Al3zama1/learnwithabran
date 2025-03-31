@@ -125,6 +125,12 @@ const SideBar = () => {
         }
     }, []);
 
+    const handleLinkClick = () => {
+        if (window.innerWidth < 640 && sidebarOpen) {
+            setSidebarOpen(false)
+        }
+    }
+
   return (
     <aside className={`fixed top-15 h-[calc(100%-3.75rem)] bg-light-background dark:bg-dark-background z-50 w-0 overflow-hidden overflow-x-auto overflow-y-auto
         ${sidebarOpen == true ? 'w-full sm:w-80' : ''}`}>
@@ -134,7 +140,7 @@ const SideBar = () => {
                 <ul className='my-2 pl-4'>
                     {section.pages.map(page => 
                         <li className='hover:cursor-pointer'>
-                            <NavLink to={page.link} className={ ({isActive}) => isActive ? 
+                            <NavLink to={page.link} onClick={handleLinkClick} className={ ({isActive}) => isActive ? 
                                 'px-3 py-2 w-full inline-block border-l-3 text-light-accent dark:text-dark-accent bg-light-active-link-background dark:bg-dark-active-link-background hover:bg-light-active-link-hover-background dark:hover:bg-dark-active-link-hover-background' 
                                 : 
                                 'px-3 py-2 w-full inline-block border-l-3 border-light-border dark:border-dark-border hover:bg-light-link-hover-background dark:hover:bg-dark-link-hover-background text-light-link-foreground dark:text-dark-link-foreground'}>
