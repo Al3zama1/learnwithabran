@@ -13,7 +13,6 @@ const ArticlePage = ({ children } : Props) => {
     const scrollTop = useRef<HTMLElement>(null);
 
     useEffect(() => {
-      window.scroll(0, 0);
       scrollTop.current?.scrollIntoView()
     }, [pathname])
 
