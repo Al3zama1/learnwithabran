@@ -20,7 +20,7 @@ const Header = () => {
     }
     
   return (
-    <header className={`flex justify-around w-full dark:bg-dark-background items-center h-15 fixed
+    <header className={`flex justify-start pr-3 flex-row-reverse gap-10 w-full dark:bg-dark-background items-center h-15 fixed
         ${sidebarOpen === false ? 'sm:flex-col sm:h-screen sm:w-15 sm:justify-start sm:gap-10' 
         : 
         'sm:w-80 border-b-[1px] dark:border-dark-border '}`}>
@@ -30,12 +30,12 @@ const Header = () => {
         <button className='hover:cursor-pointer' onClick={handleTheme}>
             <Moon />
         </button>
-        <button className='hover:cursor-pointer'>
+        {/* <button className='hover:cursor-pointer'>
             <Search />
-        </button>
-        <button className='hover:cursor-pointer'>
+        </button> */}
+        {/* <button className='hover:cursor-pointer'>
             <User />
-        </button>
+        </button> */}
     </header>
   )
 }
