@@ -1,4 +1,4 @@
-package com.learnwithabran.learn_with_abran_backend;
+package com.withabran.learn_with_abran_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

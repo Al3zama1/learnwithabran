@@ -1,4 +1,4 @@
-package com.learnwithabran.learn_with_abran_backend;
+package com.withabran.learn_with_abran_backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
