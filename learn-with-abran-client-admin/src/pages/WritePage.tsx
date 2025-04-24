@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import hljs from 'highlight.js';
 import katex from 'katex';
-import Quill from 'quill';
+import Quill, { Delta } from 'quill';
 import 'quill/dist/quill.snow.css';
+import 'highlight.js/styles/atom-one-dark.css'
 import 'katex/dist/katex.min.css';
 import { ArrowBigDown, ArrowBigLeft, ArrowBigRight, ArrowBigUp, ArrowDownUp, ArrowLeftRight, Table, Trash2 } from 'lucide-react';
+import useAppContext from '@/hooks/UseAppContext';
 
-// window.katex = katex;
 (window.katex as any) = katex
 
 
@@ -15,6 +16,7 @@ import { ArrowBigDown, ArrowBigLeft, ArrowBigRight, ArrowBigUp, ArrowDownUp, Arr
 const WritePage = () => {
     const editorRef = useRef<HTMLDivElement>(null);
     const [quill, setQuill] = useState<Quill | null>(null);
+    const editorChangeRef = useRef<Delta>(new Delta())
     const [isEditorLoaded, setIsEditorLoaded] = useState<boolean>(false);
 
     const [table, setTable] = useState<any>(null);
@@ -26,6 +28,8 @@ const WritePage = () => {
     const colRightRef = useRef<HTMLButtonElement>(null);
     const rmColRef = useRef<HTMLButtonElement>(null);
     const rmTableRef = useRef<HTMLButtonElement>(null);
+
+    const { setShowArticlePreview } = useAppContext();
 
     useEffect(() => {
 
@@ -42,6 +46,9 @@ const WritePage = () => {
 
             setQuill(quill)
             setTable(quill.getModule('table'));
+            quill.on('text-change', (delta) => {
+                editorChangeRef.current = editorChangeRef.current.compose(delta)
+            })
         }
 
         setIsEditorLoaded(true);
@@ -96,10 +103,34 @@ const WritePage = () => {
     }, [isEditorLoaded, table])
 
 
+    useEffect(() => {
+        if (!quill && !isEditorLoaded) return
+
+        setInterval(() => {
+            if (editorChangeRef.current.length() > 0) {
+                console.log('Saving changes');
+
+
+                editorChangeRef.current = new Delta();
+            }
+            
+        }, 5 * 1000)
+
+    }, [quill, isEditorLoaded])
+
+
+    const saveEditor = () => {
+        localStorage.setItem('article', JSON.stringify(quill?.getContents()))
+    }
+
   return (
-    <main className='w-full h-[calc(100vh-3.75rem)] flex justify-center'>
-        <section className='min-w-4xl max-w-4xl'>
-            <div id="toolbar" className='h-15 flex items-center overflow-auto'>
+    <main className='w-full flex flex-col items-center gap-5'>
+        {/* <section className='flex gap-3'>
+            <button className='hover:cursor-pointer' onClick={saveEditor}>Save</button>
+            <button className='hover:cursor-pointer'>Publish</button>
+        </section> */}
+        <section className='max-w-4xl w-full basis-[calc(100vh-20rem)] max-h-[calc(100vh-20rem)]'>
+            <div id="toolbar" className=''>
                 <select className="ql-header">
                     <option className='ql-selected'></option>
                     <option value="1">Heading 1</option>
