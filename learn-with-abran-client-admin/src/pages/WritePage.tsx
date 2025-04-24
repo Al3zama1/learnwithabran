@@ -6,7 +6,6 @@ import 'quill/dist/quill.snow.css';
 import 'highlight.js/styles/atom-one-dark.css'
 import 'katex/dist/katex.min.css';
 import { ArrowBigDown, ArrowBigLeft, ArrowBigRight, ArrowBigUp, ArrowDownUp, ArrowLeftRight, Table, Trash2 } from 'lucide-react';
-import useAppContext from '@/hooks/UseAppContext';
 
 (window.katex as any) = katex
 
@@ -29,7 +28,6 @@ const WritePage = () => {
     const rmColRef = useRef<HTMLButtonElement>(null);
     const rmTableRef = useRef<HTMLButtonElement>(null);
 
-    const { setShowArticlePreview } = useAppContext();
 
     useEffect(() => {
 
@@ -119,9 +117,6 @@ const WritePage = () => {
     }, [quill, isEditorLoaded])
 
 
-    const saveEditor = () => {
-        localStorage.setItem('article', JSON.stringify(quill?.getContents()))
-    }
 
   return (
     <main className='w-full flex flex-col items-center gap-5'>
