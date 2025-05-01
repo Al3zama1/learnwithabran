@@ -1,4 +1,5 @@
 import MainLayout from '@/layout/MainLayout'
+import StoriesPage from '@/pages/StoriesPage';
 import WritePage from '@/pages/WritePage'
 import { createBrowserRouter } from 'react-router-dom'
 
@@ -15,8 +16,12 @@ const router = createBrowserRouter([
                 element: <WritePage />
             },
             {
-                path: '/stories',
-                element: <h1>Stories</h1>
+                path: '/stories/drafts',
+                element: <StoriesPage />
+            },
+            {
+                path: '/stories/published',
+                element: <StoriesPage />
             },
             {
                 path: '/profile',

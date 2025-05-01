@@ -4,6 +4,35 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-dark-background: var(--dark-background);
+  --color-dark-foreground: var(--dark-foreground);
+  --color-dark-accent: var(--dark-accent);
+  --color-dark-border: var(--dark-border);
+  --color-dark-home-page-background: var(--dark-home-page-background);
+  --color-dark-section-background: var(--dark-section-background);
+  --color-dark-section-hover-background: var(--dark-section-hover-background);
+  --color-dark-link-hover-background: var(--dark-link-hover-background);
+  --color-dark-active-link-background: var(--dark-active-link-background);
+  --color-dark-active-link-hover-background: var(--dark-active-link-hover-background);
+  --color-dark-link-foreground: var(--dark-link-foreground);
+  
+
+  --color-light-background: var(--light-background);
+  --color-light-foreground: var(--light-foreground);
+  --color-light-accent: var(--light-accent);
+  --color-light-border: var(--light-border);
+  --color-light-home-page-background: var(--light-home-page-background);
+  --color-light-section-background: var(--light-section-background);
+  --color-light-section-hover-background: var(--light-section-hover-background);
+  --color-light-link-hover-background: var(--light-link-hover-background);
+  --color-light-active-link-background: var(--light-active-link-background);
+  --color-light-active-link-hover-background: var(--light-active-link-hover-background);
+  --color-light-link-foreground: var(--light-link-foreground);
+
+  
+
+  --font-sans: sans-serif;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -42,6 +71,38 @@
 }
 
 :root {
+  --dark-background: #1a1a22;
+  --dark-foreground: #e7e7ff;
+  --dark-accent: #7979fe;
+  --dark-border: color-mix(in srgb,var(--dark-foreground) 10%,transparent);
+  --dark-home-page-background: color-mix(in srgb, var(--dark-background) 100%, var(--dark-foreground) 7%);
+  --dark-section-background: color-mix(in srgb,var(--dark-foreground)4%,transparent);
+  --dark-section-hover-background: color-mix(in srgb,var(--dark-foreground)7%,transparent);
+  --dark-link-hover-background: color-mix(in srgb,var(--dark-foreground)3%,transparent);
+  --dark-active-link-background: color-mix(in srgb,var(--dark-accent)12%,transparent);
+  --dark-active-link-hover-background: color-mix(in srgb,var(--dark-accent)20%,transparent);
+  --dark-link-foreground: color-mix(in srgb,var(--dark-foreground)70%,transparent);
+
+  
+  --light-background: white;
+  --light-foreground: #33335e;
+  --light-accent: #3030b6;
+  --light-border: color-mix(in srgb,var(--light-foreground)10%,transparent);
+  --light-home-page-background: color-mix(in srgb,var(--light-background),var(--light-foreground)7%);
+  --light-section-background: color-mix(in srgb,var(--light-foreground)4%,transparent);
+  --light-section-hover-background: color-mix(in srgb,var(--light-foreground)7%,transparent);
+  --light-link-hover-background: color-mix(in srgb,var(--light-foreground)3%,transparent);
+  --light-active-link-background: color-mix(in srgb,var(--light-accent)12%,transparent);
+  --light-active-link-hover-background: color-mix(in srgb,var(--light-accent)20%,transparent);
+  --light-link-foreground: color-mix(in srgb,var(--light-foreground)70%,transparent);
+
+
+  --callout-radius: .75rem;
+
+
+
+
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -117,4 +178,138 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+@layer utilities {
+
+
+    .dark .article .ql-code-block-container {
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem 0 !important;
+        color: var(--dark-foreground) !important;
+        background-color: color-mix(in srgb,var(--dark-foreground)2%,transparent) !important;
+        border: 2px solid var(--dark-border) !important;
+        font-size: 13px;
+        
+    }
+
+    
+    .article .ql-code-block-container {
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem 0 !important;
+        color: var(--light-foreground) !important;
+        background-color: color-mix(in srgb,var(--light-foreground)2%,transparent) !important;
+        border: 2px solid var(--light-border) !important;
+        font-size: 13px;
+    }
+
+
+    .read.article .ql-ui {
+        @apply pointer-events-none
+    }
+
+    .article h1,h2,h3,p,li,a,table {
+        @apply font-sans
+    }
+
+    .article table {
+      @apply text-base
+    }
+
+    .article table tbody tr:nth-child(even) {
+      background: linear-gradient(to bottom,transparent,color-mix(in srgb,var(--dark-accent)10%,transparent));
+    }
+
+    .article td {
+      @apply !border-light-border
+    }
+
+    .dark .article td {
+      @apply !border-dark-border
+    }
+
+    .article p {
+        @apply !my-4 text-base
+    }
+
+    .dark .article strong {
+        @apply text-dark-accent
+    }
+
+    .article strong {
+        @apply text-light-accent
+    }
+
+    .article h1 {
+        @apply !text-5xl font-bold !my-10
+    }
+
+    .article h2 {
+        @apply !text-3xl !mt-10 !mb-6
+    }
+
+    .article h3 {
+      @apply !text-2xl !mt-5 !mb-3
+    }
+
+    .article img {
+        @apply w-[640px] h-[320px] rounded-lg mx-auto my-4 border-2 border-dark-accent
+    }
+
+    .article ol {
+        @apply !pl-12
+    }
+
+    .article li {
+        @apply !my-1 !pl-0 text-base
+    }
+
+    .article li[data-list="bullet"] {
+        @apply !list-disc 
+    }
+
+    .article li[data-list="bullet"]::marker {
+        @apply text-black
+    }
+
+    .dark .article li[data-list="bullet"]::marker {
+        @apply text-white
+    }
+
+    .article code {
+        @apply text-light-accent !bg-transparent !text-base
+    }
+
+    .dark .article code {
+        @apply text-dark-accent !bg-transparent !text-base
+    }
+
+    .article li[data-list="bullet"] .ql-ui {
+        @apply hidden
+    }
+
+    .article a {
+        @apply italic underline text-base !text-light-accent
+    }
+    
+    
+    .dark .article a {
+        @apply !text-dark-accent
+    }
+
+    .article .callout-true {
+        border: 2px solid var(--dark-accent);
+        border-radius: var(--callout-radius);
+        padding: 1.5rem !important;
+        background: linear-gradient(to bottom,transparent,color-mix(in srgb,var(--dark-accent)10%,transparent));
+    }
+
+    .article .callout-true::before {
+        content: "💡";
+        margin-right: .3rem;
+    }
+
 }
