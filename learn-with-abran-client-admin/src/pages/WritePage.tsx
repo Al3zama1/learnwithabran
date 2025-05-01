@@ -7,6 +7,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 import 'katex/dist/katex.min.css';
 import { ArrowBigDown, ArrowBigLeft, ArrowBigRight, ArrowBigUp, ArrowDownUp, ArrowLeftRight, Lightbulb, Table, Trash2 } from 'lucide-react';
 import useAppContext from '@/hooks/UseAppContext';
+import PublishArticle from '@/components/PublishArticle';
 
 (window.katex as any) = katex
 
@@ -151,8 +152,6 @@ const WritePage = () => {
         } 
     }
 
-
-
   return (
     <main className='w-full fixed top-20 left-0'>
         {/* <section className='flex gap-3'>
@@ -221,6 +220,7 @@ const WritePage = () => {
                 ${showArticlePreview && 'rounded-t-lg max-h-[calc(100vh-6rem)]'}`}>
             </div>
         </section>
+        <PublishArticle />
     </main>
   )
 }
