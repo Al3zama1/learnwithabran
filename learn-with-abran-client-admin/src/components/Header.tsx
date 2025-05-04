@@ -4,11 +4,13 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import useAppContext from "@/hooks/UseAppContext";
 import ReloadingLink from "./ReloadingLink";
 import { Moon, SquarePen, Sun } from "lucide-react";
+import PublishArticle from "./PublishArticle";
+import { Button } from "./ui/button";
 
 const Header = () => {
 
   const { pathname } = useLocation();
-  const { setShowArticlePreview, showArticlePreview, setLightPreviewTheme, lightPreviewTheme, unsavedChanges, setPublish } = useAppContext();
+  const { setShowArticlePreview, showArticlePreview, setLightPreviewTheme, lightPreviewTheme, unsavedChanges } = useAppContext();
 
   const handleArticlePreview = () => {
     setShowArticlePreview(!showArticlePreview);
@@ -17,10 +19,6 @@ const Header = () => {
   const handleArticlePreviewTheme = () => {
     setLightPreviewTheme(!lightPreviewTheme)
   }
-  
-  const handlePublishArticle = () => {
-    setPublish(true)
-  }
 
   return (
     <header className='fixed h-15 mb-5 w-full left-0 top-0'>
@@ -28,9 +26,10 @@ const Header = () => {
             <ul>
                 {/* <li className="font-bold">LearnWithAbran</li> */}
             </ul>
-            <ul className='flex gap-3'>
-                {pathname === '/write' && <li><button className="hover:cursor-pointer" onClick={handlePublishArticle}>Publish</button></li>}
-                {pathname === '/write' && <li><button className='hover:cursor-pointer disabled:cursor-default disabled:text-gray-300' disabled={unsavedChanges} onClick={handleArticlePreview}>{showArticlePreview === false ? 'Preview' : 'Exit Preview'}</button></li>}
+            <ul className='flex items-center gap-3'>
+                {pathname === '/write' && <li><PublishArticle /></li>}
+                {pathname === '/write' && <li><Button variant='outline' className="hover:cursor-pointer" type='button' disabled={unsavedChanges} onClick={handleArticlePreview}>{showArticlePreview === false ? 'Preview' : 'Exit Preview'}</Button></li>}
+                {/* {pathname === '/write' && <li><button className='hover:cursor-pointer disabled:cursor-default disabled:text-gray-300' disabled={unsavedChanges} onClick={handleArticlePreview}>{showArticlePreview === false ? 'Preview' : 'Exit Preview'}</button></li>} */}
                 {pathname === '/write' && showArticlePreview && <li><button className={`hover:cursor-pointer`} type="button" onClick={handleArticlePreviewTheme}>{lightPreviewTheme === true ? <Moon /> : <Sun />}</button></li>}
                 {pathname !== '/write' && <Link to='/write' className="hover:cursor-pointer flex items-center gap-1.5 text-gray-500"><SquarePen className="size-4" /> Write</Link>}
                 <li>
@@ -38,7 +37,7 @@ const Header = () => {
                     <DropdownMenuTrigger className="hover:cursor-pointer">
                       <Avatar>
                         <AvatarImage src=""/>
-                        <AvatarFallback className="bg-blue-200">AL</AvatarFallback>
+                        <AvatarFallback className="">AL</AvatarFallback>
                       </Avatar>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>

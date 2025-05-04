@@ -1,6 +1,7 @@
 import CreateBook from '@/components/CreateBook';
 import CreateBookSection from '@/components/CreateBookSection';
 import StoriesEntry from '@/components/StoriesEntry';
+import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom'
 
 const StoriesPage = () => {
@@ -14,7 +15,7 @@ const StoriesPage = () => {
             <div className='flex items-center justify-between mb-5'>
                 <h1 className='text-2xl font-bold'>Your Stories</h1>
                 <div className='flex gap-3'>
-                    <Link to='/write' className='border-2 border-light-border rounded-full py-1 px-2 hover:cursor-pointer'>Write a page</Link>
+                    <Button variant='outline' className='hover:cursor-pointer'><Link to='/write'>Write</Link></Button>
                     <CreateBook />
                     <CreateBookSection />
                     {/* <button type='button' onClick={handleCreateBook} className='border-2 border-light-border rounded-full py-1 px-2 hover:cursor-pointer'>Create Book</button> */}
