@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import axios from '@/api/axios';
 
+
 const bookSectionformSchema = z.object({
   book: z.string({
     required_error: 'Please select the book to assign the section to.'
@@ -17,10 +18,6 @@ const bookSectionformSchema = z.object({
   section: z.string({
     required_error: 'You must assign a name to the section'
   }).nonempty()
-})
-
-const bookSectionForm = useForm<z.infer<typeof bookSectionformSchema>>({
-  resolver: zodResolver(bookSectionformSchema),
 })
 
 
@@ -32,6 +29,10 @@ const CreateBookSection = () => {
     mutationFn: (data : { book: string, section: string }) => { 
         return axios.post('/books', data)
     }
+})
+
+const bookSectionForm = useForm<z.infer<typeof bookSectionformSchema>>({
+  resolver: zodResolver(bookSectionformSchema),
 })
 
   const handleCreateBookSection = (values: z.infer<typeof bookSectionformSchema>) => {

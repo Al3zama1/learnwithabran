@@ -10,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form';
 import { useMutation } from '@tanstack/react-query';
 import axios from '@/api/axios';
 
+
 const publishPageSchema = z.object({
     book: z.string({
       required_error: 'Please select the book to assign the section to.'
@@ -21,11 +22,7 @@ const publishPageSchema = z.object({
       required_error: 'You must assign the page a title.'
     }).nonempty()
   })
-
-  const publicPageForm = useForm<z.infer<typeof publishPageSchema>>({
-    resolver: zodResolver(publishPageSchema),
-  })
-
+  
 
 const PublishArticle = () => {
 
@@ -36,6 +33,10 @@ const PublishArticle = () => {
             return axios.post('/books', data)
         }
     })
+    
+      const publicPageForm = useForm<z.infer<typeof publishPageSchema>>({
+        resolver: zodResolver(publishPageSchema),
+      })
 
     const handlePublishPage = (values: z.infer<typeof publishPageSchema>) => {
         publishPageMutation.mutate({ title: values.title, book: values.book, section: values.section })

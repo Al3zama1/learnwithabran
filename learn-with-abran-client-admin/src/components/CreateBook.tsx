@@ -14,10 +14,6 @@ const bookFormSchema = z.object({
     book: z.string().nonempty({message: 'Book name is required'})
 })
 
-const bookForm = useForm<z.infer<typeof bookFormSchema>>({
-    resolver: zodResolver(bookFormSchema),
-})
-
 
 const CreateBook = () => {
     const [open, setOpen] = useState(false)
@@ -27,6 +23,10 @@ const CreateBook = () => {
             return axios.post('/books', data)
         }
     })
+
+const bookForm = useForm<z.infer<typeof bookFormSchema>>({
+    resolver: zodResolver(bookFormSchema),
+})
 
     const handleBookCreation = (values: z.infer<typeof bookFormSchema>) => {
         createBookMutation.mutate({ book: values.book })
