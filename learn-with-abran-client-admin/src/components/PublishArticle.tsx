@@ -22,7 +22,7 @@ const publishPageSchema = z.object({
       required_error: 'You must assign the page a title.'
     }).nonempty()
   })
-  
+
 
 const PublishArticle = () => {
 
@@ -36,6 +36,11 @@ const PublishArticle = () => {
     
       const publicPageForm = useForm<z.infer<typeof publishPageSchema>>({
         resolver: zodResolver(publishPageSchema),
+        defaultValues: {
+            book: '',
+            section: '',
+            title: ''
+        }
       })
 
     const handlePublishPage = (values: z.infer<typeof publishPageSchema>) => {

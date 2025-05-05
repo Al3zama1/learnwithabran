@@ -5,40 +5,57 @@ import { Input } from './ui/input';
 import { z } from 'zod'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './ui/form';
 import { useMutation } from '@tanstack/react-query';
-import axios from '@/api/axios';
+import {axiosPrivate} from '@/api/axios';
+import { toast } from 'sonner';
 
 
 const bookFormSchema = z.object({
-    book: z.string().nonempty({message: 'Book name is required'})
+    title: z.string({message: "Please assign the book a title."}).nonempty({message: 'Book title cannot be blank.'})
 })
 
 
 const CreateBook = () => {
-    const [open, setOpen] = useState(false)
+    const [dialogOpen, setDialogOpen] = useState(false)
 
     const createBookMutation = useMutation({
-        mutationFn: (data : { book: string }) => { 
-            return axios.post('/books', data)
+        mutationFn: (data : { title: string }) => { 
+            return axiosPrivate.post('/books', data)
+        }, 
+        onSuccess: () => {
+            bookForm.reset()
+            setDialogOpen(false)
+            toast.success('Book has been created')
+        },
+        onError: () => {
+            toast.error('Failed to create book')
         }
     })
 
 const bookForm = useForm<z.infer<typeof bookFormSchema>>({
     resolver: zodResolver(bookFormSchema),
+    defaultValues: {
+        title: ''
+    }
 })
 
-    const handleBookCreation = (values: z.infer<typeof bookFormSchema>) => {
-        createBookMutation.mutate({ book: values.book })
+const onOpenChange = (next: boolean) => {
+    if (!next) {
+        bookForm.reset();
+        setDialogOpen(false)
+    }
+}
 
-        if (createBookMutation.isSuccess) setOpen(false);
+    const handleBookCreation = (values: z.infer<typeof bookFormSchema>) => {
+        createBookMutation.mutate({ title: values.title })
     }
 
 
   return (
-    <Dialog open={open} onOpenChange={setOpen} >
+    <Dialog open={dialogOpen} onOpenChange={onOpenChange} >
       <DialogTrigger asChild>
-        <Button variant="outline" className='hover:cursor-pointer' onClick={() => setOpen(true)}>Add Book</Button>
+        <Button variant="outline" className='hover:cursor-pointer' onClick={() => setDialogOpen(true)}>Add Book</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -51,13 +68,14 @@ const bookForm = useForm<z.infer<typeof bookFormSchema>>({
             <form onSubmit={bookForm.handleSubmit(handleBookCreation)}>
                 <FormField
                     control={bookForm.control}
-                    name='book'
+                    name='title'
                     render={({ field }) => (
                         <FormItem className='grid grid-cols-4 items-center gap-4'>
                             <FormLabel>Book title</FormLabel>
                             <FormControl className='col-span-3'>
                                 <Input placeholder='Software Engineering' {...field} />
                             </FormControl>
+                            <FormMessage className='col-start-2 col-span-full' />
                         </FormItem>
                     )}
                 />

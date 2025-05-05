@@ -33,6 +33,10 @@ const CreateBookSection = () => {
 
 const bookSectionForm = useForm<z.infer<typeof bookSectionformSchema>>({
   resolver: zodResolver(bookSectionformSchema),
+  defaultValues: {
+    book: '',
+    section: ''
+  }
 })
 
   const handleCreateBookSection = (values: z.infer<typeof bookSectionformSchema>) => {
