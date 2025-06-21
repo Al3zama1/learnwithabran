@@ -1,0 +1,13 @@
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  data:
+    mongodb:
+      host: localhost
+      username: admin
+      password: password
+      authentication-database: admin
+      auto-index-creation: true
+      port: 27017
+      database: learnwithabran
